@@ -13,4 +13,9 @@ defmodule PhysicsTest do
     ev =  planet_x |> Physics.Rocketry.escape_velocity |> IO.inspect
     assert ev == 1.0 
   end
+
+  test "escape velocity only accepts maps" do
+    planet_fake = "Fake Planet"
+    catch_error(planet_fake |> Physics.Rocketry.escape_velocity |> IO.inspect)
+  end
 end
