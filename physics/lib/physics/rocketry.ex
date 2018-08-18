@@ -35,7 +35,7 @@ defmodule Physics.Rocketry do
   defp calculate_escape(%{mass: mass, radius: radius}) do
     newtons_constant = 6.67e-11
     2 * newtons_constant * mass / radius
-      |> :mass.sqrt
+      |> :math.sqrt
   end
 
 end
