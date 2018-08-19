@@ -15,6 +15,14 @@ defmodule Converter do
     (meters * 3.335638620368e-9) |> round_up
   end
 
+  def to_light_seconds({:feet, feet} = val, precision: precision) do
+    (feet * 1.016702651488166404e-9) |> round_up
+  end
+
+  def to_light_seconds({:inches, inches} = val, precision: precision) do
+    (inches * 8.472522095734715723e-11) |> round_up
+  end
+
   def round_up(val) when is_float(val), do: trunc(val)
 end
 
