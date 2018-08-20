@@ -6,13 +6,13 @@ defmodule PhysicsTest do
     test "escape velocity of earth is correct" do
       #notice how you can pipe directly to IO.inspect? And still get the value returned...
       ev = Physics.Rocketry.escape_velocity(:earth) |> IO.inspect
-      assert ev == 11.2 
+      assert ev == 11.2
     end
 
     test "escape velocity of planet X is correct" do
       planet_x = %{mass: 4.0e22, radius: 6.21e6}
       ev =  planet_x |> Physics.Rocketry.escape_velocity |> IO.inspect
-      assert ev == 1.0 
+      assert ev == 0.9
     end
 
     test "escape velocity only accepts maps" do
@@ -22,6 +22,11 @@ defmodule PhysicsTest do
   end
 
   describe ".Converter" do
+    test "light seconds converts correctly" do
+      light_seconds = Converter.to_light_seconds({:miles, 1000}, precision: 5) |> IO.inspect
+      assert light_seconds == 0.00537
+    end
+
     test "rounds to_nearest_tenth correctly" do
       assert 0.8 == 0.75 |> Converter.to_nearest_tenth
     end
@@ -30,12 +35,20 @@ defmodule PhysicsTest do
       assert 1 == 1000 |> Converter.to_km
     end
 
-    test "round up only accepts floats" do
-      catch_error(24 |> Converter.round_up)
+    test "converts to meters correctly" do
+      assert 1000 == 1 |> Converter.to_meters
+    end
+  end
+
+  describe ".ConverterTwo" do
+    test "light seconds converts correctly" do
+      light_seconds = ConverterTwo.to_light_seconds({:miles, 1000}, precision: 5) |> IO.inspect
+      assert light_seconds == 0.00537
     end
 
-    test "round_up truncs value correctly" do
-      assert 1 == 1.35 |> Converter.round_up
-    end 
+    test "light seconds default value works correctly" do
+      light_seconds = ConverterTwo.to_light_seconds({:miles, 1000}) |> IO.inspect
+      assert light_seconds == 0.00537
+    end
   end
 end
