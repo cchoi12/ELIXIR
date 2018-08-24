@@ -4,9 +4,18 @@ defmodule PhysicsTest do
 
   describe ".Rocketry" do
     test "escape velocity of earth is correct" do
-      #notice how you can pipe directly to IO.inspect? And still get the value returned...
       ev = Physics.Rocketry.escape_velocity(:earth) |> IO.inspect
       assert ev == 11.2
+    end
+
+    test "escape velocity of mars is correct" do
+      ev = Physics.Rocketry.escape_velocity(:mars) |> IO.inspect
+      assert ev == 5.0
+    end
+
+    test "escape velocity of the moon is correct" do
+      ev = Physics.Rocketry.escape_velocity(:moon) |> IO.inspect
+      assert ev == 2.4
     end
 
     test "escape velocity of planet X is correct" do
