@@ -75,6 +75,10 @@ defmodule PhysicsTest do
     test "calculates cubed value correctly" do
       assert 8 == 2 |> Calcs.cubed
     end
+
+    test "calculates values multiplied by 1/3 correctly" do
+      assert 3 == 9 |> Calcs.multiply_by_one_third
+    end
   end
 end
 
