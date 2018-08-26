@@ -28,6 +28,16 @@ defmodule PhysicsTest do
       planet_fake = "Fake Planet"
       catch_error(planet_fake |> Physics.Rocketry.escape_velocity |> IO.inspect)
     end
+
+    test "Orbital acceleration for earth at 100km" do
+      orbital_acc = Physics.Rocketry.orbital_acceleration(100)
+      assert orbital_acc == 9.515619587729839
+    end
+
+    test "Orbital term for 100km above earth" do
+      term = Physics.Rocketry.orbital_term(100) |> IO.inspect
+      assert (term > 4) && (term < 5) #crap fix this!
+    end
   end
 
   describe ".Converter" do
@@ -48,24 +58,8 @@ defmodule PhysicsTest do
       assert 1000 == 1 |> Converter.to_meters
     end
 
-    test "converts minutes to hours correctly" do
-      assert 2 == 120 |> Converter.minutes_to_hours
-    end
-
     test "converts seconds to hours correctly" do
       assert 2 == 7200 |> Converter.seconds_to_hours
-    end
-  end
-
-  describe ".ConverterTwo" do
-    test "light seconds converts correctly" do
-      light_seconds = ConverterTwo.to_light_seconds({:miles, 1000}, precision: 5) |> IO.inspect
-      assert light_seconds == 0.00537
-    end
-
-    test "light seconds default value works correctly" do
-      light_seconds = ConverterTwo.to_light_seconds({:miles, 1000}) |> IO.inspect
-      assert light_seconds == 0.00537
     end
   end
 
