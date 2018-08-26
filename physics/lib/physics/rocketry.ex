@@ -15,6 +15,10 @@ defmodule Physics.Rocketry do
       |> to_nearest_tenth
   end
 
+  def orbital_term(height) do
+    4 * (:math.pi |> squared) * (orbital_radius(height) |> cubed) / (newtons_gravitational_constant * earth().mass)
+  end
+
   def orbital_acceleration(height) do
     (orbital_speed(height) |> squared) / orbital_radius(height)
   end

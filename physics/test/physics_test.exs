@@ -47,6 +47,14 @@ defmodule PhysicsTest do
     test "converts to meters correctly" do
       assert 1000 == 1 |> Converter.to_meters
     end
+
+    test "converts minutes to hours correctly" do
+      assert 2 == 120 |> Converter.minutes_to_hours
+    end
+
+    test "converts seconds to hours correctly" do
+      assert 2 == 7200 |> Converter.seconds_to_hours
+    end
   end
 
   describe ".ConverterTwo" do
@@ -60,4 +68,19 @@ defmodule PhysicsTest do
       assert light_seconds == 0.00537
     end
   end
+
+  describe ".Calcs" do
+    test "calculates square root correctly" do
+      assert 3 == 9 |> Calcs.square_root
+    end
+
+    test "calculates squared value correctly" do
+      assert 4 == 2 |> Calcs.squared
+    end
+
+    test "calculates cubed value correctly" do
+      assert 8 == 2 |> Calcs.cubed
+    end
+  end
 end
+
