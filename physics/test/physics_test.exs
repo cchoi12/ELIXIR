@@ -31,12 +31,12 @@ defmodule PhysicsTest do
 
     test "Orbital acceleration for earth at 100km" do
       orbital_acc = Physics.Rocketry.orbital_acceleration(100)
-      assert orbital_acc == 9.515619587729839
+      assert orbital_acc == 9.512678810620692
     end
 
     test "Orbital term for 100km above earth" do
       term = Physics.Rocketry.orbital_term(100) |> IO.inspect
-      assert (term > 4) && (term < 5) #crap fix this!
+      assert (term > 1) && (term < 2)
     end
   end
 
