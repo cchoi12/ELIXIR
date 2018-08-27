@@ -16,14 +16,14 @@ defmodule Physics.Rocketry do
   end
 
   def orbital_term(height) do
-    4 * (:math.pi |> squared) * (orbital_radius(height) |> cubed) / (newtons_gravitational_constant * earth().mass)
+    4 * (:math.pi |> squared) * (orbital_radius(height) |> cubed) / (newtons_gravitational_constant() * earth().mass)
       |> square_root
       |> seconds_to_hours
   end
 
-  def orbital_term_two(height) do
-    (newtons_gravitational_constant() * earth.mass() * (4 |> squared)) / (4 * (:math.pi |> squared))
-      |> multiply_by_one_third
+  def earth_to_orbit_term_4_hours(time) do
+    (newtons_gravitational_constant() * earth().mass * (time |> squared)) / (4 * (:math.pi |> squared))
+      |> n_root(1/3)
   end
 
   def orbital_acceleration(height) do

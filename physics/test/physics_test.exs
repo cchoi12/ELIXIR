@@ -38,6 +38,11 @@ defmodule PhysicsTest do
       term = Physics.Rocketry.orbital_term(100) |> IO.inspect
       assert (term > 1) && (term < 2)
     end
+
+    test "Earth to orbit term calculation in 4 hours" do
+      term = Physics.Rocketry.earth_to_orbit_term_4_hours(4) |> IO.inspect
+      assert (term > 50000) && ( term < 60000)
+    end
   end
 
   describe ".Converter" do
@@ -76,8 +81,8 @@ defmodule PhysicsTest do
       assert 8 == 2 |> Calcs.cubed
     end
 
-    test "calculates values multiplied by 1/3 correctly" do
-      assert 3 == 9 |> Calcs.multiply_by_one_third
+    test "calculates value to the nth power" do
+      assert 3 == 27 |> Calcs.n_root(1/3)
     end
   end
 end
