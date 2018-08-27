@@ -40,7 +40,7 @@ defmodule PhysicsTest do
     end
 
     test "Earth to orbit term calculation in 4 hours" do
-      term = Physics.Rocketry.earth_to_orbit_term_4_hours(4) |> IO.inspect
+      term = Physics.Rocketry.earth_orbit_term(4) |> IO.inspect
       assert (term > 50000) && ( term < 60000)
     end
   end

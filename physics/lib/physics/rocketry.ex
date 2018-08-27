@@ -21,8 +21,10 @@ defmodule Physics.Rocketry do
       |> seconds_to_hours
   end
 
-  def earth_to_orbit_term_4_hours(time) do
-    (newtons_gravitational_constant() * earth().mass * (time |> squared)) / (4 * (:math.pi |> squared))
+  def earth_orbit_term(time) do
+    time
+      |> gravitational_mass_time_calc
+      |> divide_by_modified_pi_calc
       |> n_root(1/3)
   end
 
@@ -33,6 +35,14 @@ defmodule Physics.Rocketry do
   def orbital_speed(height) do
     newtons_gravitational_constant() * Planets.earth().mass / orbital_radius(height)
       |> square_root
+  end
+
+  defp gravitational_mass_time_calc(val) do
+    newtons_gravitational_constant() * earth().mass * (val |> squared)
+  end
+
+  defp divide_by_modified_pi_calc(val) do
+    val / (4 * (:math.pi |> squared))
   end
 
   defp calculate_escape(%{mass: mass, radius: radius}) do
