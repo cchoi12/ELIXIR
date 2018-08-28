@@ -3,12 +3,12 @@ defmodule CompilerProblemTest do
   import Converter
 
   test "rounding an integer" do
-    val = 19 |> round_to(0)
+    val = 19 |> round_to(0) |> IO.inspect
     assert val == 20
   end
 
-  test "rounding an integer" do
-    val = 1.9 |> round_to
+  test "rounding an float" do
+    val = 1.9 |> round_to(0)
     assert val == 2.0
   end
 
