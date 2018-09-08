@@ -3,7 +3,8 @@ defmodule CardsTest do
   doctest Cards
 
   test "creates deck successfully" do
-    assert ["Ace", "Two", "Three"] == Cards.create_deck()
+    deck = Cards.create_deck() |> length |> IO.inspect()
+    assert 52 == deck
   end
 
   test "shuffle cards randomizes" do
