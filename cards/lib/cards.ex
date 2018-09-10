@@ -1,7 +1,7 @@
 defmodule Cards do
   import Values
 
-  def create_hand do
+  def create_hand(hand_size) do
     Cards.create_deck()
     |> shuffle
     |> deal(5)
@@ -34,6 +34,13 @@ defmodule Cards do
     case File.read(filename) do
       {:ok, binary} -> :erlang.binary_to_term(binary)
       {:error, _reason} -> "That file does not exist"
+    end
+  end
+
+  def delete_deck(filename) do
+    case File.rm(filename) do
+      :ok -> "File successfully deleted"
+      {:error, _} -> "That file does not exist"
     end
   end
 end
