@@ -20,5 +20,5 @@ defmodule Values do
       "King"
     ]
 
-  def suits, do: ["Spade", "Clubs", "Hearts", "Diamonds"]
+  def suits, do: ["Spades", "Clubs", "Hearts", "Diamonds"]
 end
