@@ -1,4 +1,8 @@
 defmodule Values do
+  @moduledoc """
+    Card values and suits
+  """
+
   def values,
     do: [
       "Ace",

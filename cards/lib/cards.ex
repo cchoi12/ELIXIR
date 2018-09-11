@@ -1,6 +1,13 @@
 defmodule Cards do
   import Values
 
+  @moduledoc """
+    Provides methods for creating and handling a deck of cards.
+  """
+
+  @doc """
+    Returns a list of strings listing a deck of playing cards
+  """
   def create_hand(hand_size) do
     Cards.create_deck()
     |> shuffle
