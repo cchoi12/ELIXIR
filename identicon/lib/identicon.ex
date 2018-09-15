@@ -4,12 +4,28 @@ defmodule Identicon do
   """
 
   @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Identicon.hello()
-      :world
 
   """
+  def main(input) do
+    input
+    |> hash_input
+  end
+
+  @doc """
+  Turns input into a hash and then to a list of 15 numbers.
+
+  ## Example
+      iex> hash = Identicon.hash_input("example")
+      iex> hash
+      %Identicon.Image{
+      hex: [26, 121, 164, 214, 13, 230, 113, 142, 142, 91, 50, 110, 51, 138, 229, 51]
+      }
+  """
+  def hash_input(input) do
+    hex =
+      :crypto.hash(:md5, input)
+      |> :binary.bin_to_list()
+
+    %Identicon.Image{hex: hex}
+  end
 end
