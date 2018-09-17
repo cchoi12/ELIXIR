@@ -12,6 +12,14 @@ defmodule Identicon do
     |> pick_color
   end
 
+  @doc """
+  Takes first three values from hash_input of input.
+
+  ## Example
+      iex> hash = Identicon.hash_input("example") |> Identicon.pick_color
+      iex> hash
+      [26, 121, 164]
+  """
   def pick_color(image) do
     %Identicon.Image{hex: [r, g, b | _tail]} = image
     [r, g, b]
