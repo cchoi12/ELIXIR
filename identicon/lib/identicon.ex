@@ -23,9 +23,7 @@ defmodule Identicon do
       hex: [26, 121, 164, 214, 13, 230, 113, 142, 142, 91, 50, 110, 51, 138, 229, 51]
       }
   """
-  def pick_color(image) do
-    %Identicon.Image{hex: [r, g, b | _tail]} = image
-
+  def pick_color(%Identicon.Image{hex: [r, g, b | _tail]} = image) do
     %Identicon.Image{image | color: {r, g, b}}
   end
 
