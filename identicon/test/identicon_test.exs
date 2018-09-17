@@ -13,6 +13,6 @@ defmodule IdenticonTest do
   test "pick_color selects first three elements in list" do
     struct = Identicon.hash_input("test")
 
-    assert [9, 143, 107] == Identicon.pick_color(struct)
+    assert {9, 143, 107} == Identicon.pick_color(struct).color
   end
 end
