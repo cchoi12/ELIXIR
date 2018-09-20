@@ -13,4 +13,12 @@ defmodule IdenticonTest do
 
     assert {9, 143, 107} == Identicon.pick_color(struct).color
   end
+
+  test "mirrow_row will mirrow indexes [0, 1] and append them to the list" do
+    assert [0, 1, 2, 1, 0] == Identicon.mirror_row([0, 1, 2])
+  end
+
+  test "build_graph generates lists in a list" do
+    Identicon.build_graph(Identicon.hash_input("test"))
+  end
 end
