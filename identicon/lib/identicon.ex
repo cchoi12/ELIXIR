@@ -46,8 +46,9 @@ defmodule Identicon do
   Takes first three values from hash_input and assigns to color of input.
 
   ## Example
-      iex> hash = Identicon.hash_input("example") |> Identicon.pick_color
-      iex> hash
+      iex> hash = Identicon.hash_input("example")
+      iex> color_hash = hash |> Identicon.pick_color
+      iex> color_hash
       %Identicon.Image{
       color: {26, 121, 164},
       hex: [26, 121, 164, 214, 13, 230, 113, 142, 142, 91, 50, 110, 51, 138, 229, 51]
