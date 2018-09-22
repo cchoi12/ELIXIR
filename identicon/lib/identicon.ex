@@ -4,7 +4,7 @@ defmodule Identicon do
   """
 
   @doc """
-
+  Main function that takes input string and transforms into identicon.
   """
   def main(input) do
     input
