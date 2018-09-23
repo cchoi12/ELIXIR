@@ -18,7 +18,9 @@ defmodule IdenticonTest do
     assert [0, 1, 2, 1, 0] == Identicon.mirror_row([0, 1, 2])
   end
 
-  test "build_graph generates lists in a list" do
-    Identicon.build_graph(Identicon.hash_input("test"))
+  test "build_grid generates a mirrored list" do
+    struct = Identicon.hash_input("test")
+
+    assert 25 == Identicon.build_grid(struct).grid |> length
   end
 end
