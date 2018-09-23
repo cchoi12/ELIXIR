@@ -11,6 +11,28 @@ defmodule Identicon do
     |> hash_input
     |> pick_color
     |> build_grid
+    |> filter_odd_squares
+  end
+
+  @doc """
+  Filters out all odd element tuples from list.
+
+  ## Example
+      iex> grid = Identicon.hash_input("test") |> Identicon.build_grid
+      iex> filtered_grid = Identicon.filter_odd_squares(grid)
+      iex> filtered_grid
+      %Identicon.Image{
+      color: nil,
+      grid: [{70, 6}, {70, 8}, {202, 12}, {222, 15}, {78, 16}, {78, 18}, {222, 19}, {38, 20}, {180, 22}, {38, 24}],
+        hex: [9, 143, 107, 205, 70, 33, 211, 115, 202, 222, 78, 131, 38, 39, 180, 246]}
+  """
+  def filter_odd_squares(%Identicon.Image{grid: grid} = image) do
+    grid =
+      Enum.filter(grid, fn {code, _index} ->
+        rem(code, 2) == 0
+      end)
+
+    %Identicon.Image{image | grid: grid}
   end
 
   @doc """
