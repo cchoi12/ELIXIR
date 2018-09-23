@@ -23,4 +23,11 @@ defmodule IdenticonTest do
 
     assert 25 == Identicon.build_grid(struct).grid |> length
   end
+
+  test "filter_odd_squares filters odd 2 ele tuples" do
+    struct = Identicon.main("test")
+    filtered_struct = struct |> Identicon.build_grid() |> Identicon.filter_odd_squares()
+
+    assert 10 == filtered_struct.grid |> length
+  end
 end
