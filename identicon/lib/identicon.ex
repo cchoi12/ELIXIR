@@ -19,12 +19,11 @@ defmodule Identicon do
   ## Example
       iex> hex = Identicon.hash_input("example")
       iex> Identicon.build_grid(hex) |> IO.inspect
-      [[0,1,2,3,4,5]]
   """
   def build_grid(%Identicon.Image{hex: hex} = image) do
     hex
-    |> Enum.chunk_every(3)
-    |> Enum.map(fn x -> mirror_row(x) end)
+    |> Enum.chunk(3)
+    |> Enum.map(&mirror_row/1)
   end
 
   @doc """
